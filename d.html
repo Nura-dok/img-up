@@ -1,0 +1,53 @@
+<html>
+    <head>
+        
+        <style>canvas { border: 100px solid rgb(250, 0, 0); margin: 0 auto; }</style>
+    </head>
+<body>
+<img id="image1" src="https://www.meme-arsenal.com/memes/7d329ba05f301bdb07d648ab72b2e920.jpg" style="display:none;"/>
+<canvas id="draw" width="1500" height="1200"></canvas> 
+<script type="text/javascript">
+//Ссылаемся на картинку
+var img=document.getElementById("image1");
+var canvas=document.getElementById("draw");
+var x = 500;
+var y = 360;
+var dx = 4;
+var dy = -4;
+var ballRadius = 0;
+var ctx=canvas.getContext("2d");
+// ctx.drawImage(img,x,y);
+
+function drawBall() {     
+        ctx.beginPath();
+        // ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+        // ctx.fillStyle = "red";
+        // ctx.fill();
+        ctx.closePath();   
+        ctx.beginPath();
+        ctx.drawImage(img,x,y,);
+        ctx.closePath(); 
+        
+
+         
+    }
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+
+    if(x + dx > 1000-ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    if(y + dy > 720-ballRadius || y + dy < ballRadius) {
+        dy = -dy;
+    }
+
+    x += dx;
+    y += dy;
+}
+
+setInterval(draw, 10);
+</script> 
+</body>
+</html>
